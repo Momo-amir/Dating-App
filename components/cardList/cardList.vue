@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-wrap gap-4">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     <profile-card v-for="person in people" :key="person.id" :person="person" />
   </div>
 </template>
@@ -14,6 +15,27 @@ const people = ref([
   },
   {
     id: 2,
+    name: "Jane Smith",
+    image: "https://source.unsplash.com/random/300x200",
+    description:
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    id: 3,
+    name: "Jane Smith",
+    image: "https://source.unsplash.com/random/300x200",
+    description:
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    id: 4,
+    name: "Jane Smith",
+    image: "https://source.unsplash.com/random/300x200",
+    description:
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    id: 5,
     name: "Jane Smith",
     image: "https://source.unsplash.com/random/300x200",
     description:

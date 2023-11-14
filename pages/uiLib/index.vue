@@ -1,5 +1,3 @@
-import type { profile } from 'console';
-
 <template>
   <sign-in></sign-in>
 

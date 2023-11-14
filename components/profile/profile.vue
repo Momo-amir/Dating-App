@@ -10,6 +10,14 @@
     <section>
       <div class="form-group">
         <div class="form-field">
+          <label class="form-label">Name</label>
+          <input
+            v-model="fullName"
+            type="email"
+            class="input max-w-full"
+            disabled />
+        </div>
+        <div class="form-field">
           <label class="form-label">Email address</label>
           <input
             v-model="profileData.email"
@@ -36,18 +44,21 @@
         <div class="form-field">
           <label class="form-label">Interested In</label>
           <select v-model="profileData.interestedIn" class="input max-w-full">
-            <option value="women">Women</option>
-            <option value="men">Men</option>
+            <option value="female">Women</option>
+            <option value="male">Men</option>
+            <option value="non-binary">non-binary</option>
+            <option value="other">Other</option>
             <option value="all">All</option>
           </select>
         </div>
-
         <div class="form-field">
-          <label class="form-label">Height</label>
-          <input
-            v-model="profileData.height"
-            type="number"
-            class="input max-w-full" />
+          <label class="form-label">I identify as</label>
+          <select v-model="profileData.gender" class="input max-w-full">
+            <option value="male">Man</option>
+            <option value="female">Woman</option>
+            <option value="non-binary">non-binary</option>
+            <option value="other">Other</option>
+          </select>
         </div>
 
         <div class="form-field">
@@ -64,7 +75,7 @@
               @click="handleProfileUpdate"
               type="button"
               class="btn btn-primary w-full">
-              Update Profile
+              Save changes
             </button>
           </div>
         </div>
@@ -74,15 +85,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { useProfileData } from "@/composables/useProfileData";
 
-const profileData = ref({
-  email: "", // This should be filled with the signed in user's email
-  aboutMe: "",
-  city: "",
-  interestedIn: "",
-  height: "",
-  birthday: "",
+const { profileData } = useProfileData();
+
+const fullName = computed(() => {
+  return `${profileData.value.firstName} ${profileData.value.lastName}`;
 });
 
 const handleProfileUpdate = () => {

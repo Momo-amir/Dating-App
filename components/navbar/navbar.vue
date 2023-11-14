@@ -1,7 +1,9 @@
 <template>
   <div class="navbar rounded-lg navbar-no-boxShadow">
     <div class="navbar-start">
-      <a class="navbar-item text-secondary font-bold">HOOKD</a>
+      <NuxtLink to="/" class="navbar-item text-secondary font-bold"
+        >HOOKD</NuxtLink
+      >
     </div>
     <div class="navbar-end">
       <div>
@@ -10,10 +12,12 @@
             <a class="navbar-item text-sm">Home</a>
           </li>
           <li>
-            <a class="navbar-item text-sm">Find</a>
+            <NuxtLink to="/udforsk" class="navbar-item text-sm"
+              >Udforsk</NuxtLink
+            >
           </li>
           <li>
-            <a class="navbar-item text-sm">Messages</a>
+            <NuxtLink to="/" class="navbar-item text-sm">Matches</NuxtLink>
           </li>
         </ul>
       </div>
