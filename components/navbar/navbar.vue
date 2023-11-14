@@ -1,9 +1,22 @@
 <template>
   <div class="navbar rounded-lg navbar-no-boxShadow">
     <div class="navbar-start">
-      <a class="navbar-item">Ripple UI</a>
+      <a class="navbar-item text-secondary font-bold">HOOKD</a>
     </div>
     <div class="navbar-end">
+      <div>
+        <ul class="flex">
+          <li>
+            <a class="navbar-item text-sm">Home</a>
+          </li>
+          <li>
+            <a class="navbar-item text-sm">Find</a>
+          </li>
+          <li>
+            <a class="navbar-item text-sm">Messages</a>
+          </li>
+        </ul>
+      </div>
       <div class="avatar avatar-ring avatar-md">
         <div class="dropdown-container">
           <div class="dropdown">

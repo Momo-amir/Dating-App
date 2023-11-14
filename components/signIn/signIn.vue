@@ -24,10 +24,11 @@
         </div>
 
         <section>
-          <div class="form-group">
+          <div v-if="showSignIn" class="form-group">
             <div class="form-field">
               <label class="form-label">Email address</label>
               <input
+                v-model="signInData.email"
                 placeholder="Type here"
                 type="email"
                 class="input max-w-full" />
@@ -42,6 +43,7 @@
               </label>
               <div class="form-control">
                 <input
+                  v-model="signInData.password"
                   placeholder="Type here"
                   type="password"
                   class="input max-w-full" />
@@ -64,23 +66,110 @@
 
             <div class="form-field pt-5">
               <div class="form-control justify-between">
-                <button type="button" class="btn btn-primary w-full">
+                <button
+                  type="button"
+                  class="btn btn-primary w-full"
+                  @click="handleSignInSubmit">
                   Sign in
                 </button>
               </div>
             </div>
           </div>
-          <div class="divider text-sm">Don't have an account?</div>
+
+          <!-- Sign Up form -->
+          <div v-else class="">
+            <div class="form-group">
+              <div class="form-field">
+                <label class="form-label">First name</label>
+                <input
+                  v-model="signUpData.name"
+                  type="email"
+                  placeholder="Type here"
+                  class="input max-w-full" />
+                <label class="form-label"> </label>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Last name</label>
+                <input
+                  v-model="signUpData.lasName"
+                  type="email"
+                  placeholder="Type here"
+                  class="input max-w-full" />
+                <label class="form-label"> </label>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email address</label>
+                <input
+                  v-model="signUpData.email"
+                  type="email"
+                  placeholder="Type here"
+                  class="input max-w-full" />
+                <label class="form-label">
+                  <span class="form-label-alt"
+                    >Please enter a valid email.</span
+                  >
+                </label>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">
+                  <span>Password</span>
+                </label>
+                <div class="form-control">
+                  <input
+                    v-model="signUpData.password"
+                    type="password"
+                    placeholder="Type here"
+                    class="input max-w-full" />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">
+                  <span>Confirm Password</span>
+                </label>
+                <div class="form-control">
+                  <input
+                    v-model="signUpData.confirmPassword"
+                    type="password"
+                    placeholder="Type here"
+                    class="input max-w-full" />
+                </div>
+              </div>
+
+              <div class="form-field pt-5">
+                <div class="form-control justify-between">
+                  <button
+                    @click="handleSignUpSubmit"
+                    type="button"
+                    class="btn btn-primary w-full">
+                    Sign up
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider text-sm" v-if="showSignIn">
+            Don't have an account?
+          </div>
+          <div class="divider text-sm" v-else>Already have an account?</div>
 
           <div
             class="items-center justify-center text-xs dark:text-gray-5 sm:px-6 flex gap-2">
             <span>Click here to</span>
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              class="link link-primary text-xs"
-              >Sign up</a
-            >
+            <button
+              v-if="showSignIn"
+              @click="handleSignUpClick"
+              class="link link-primary text-xs">
+              Sign up
+            </button>
+            <button
+              v-else
+              @click="handleSignInClick"
+              class="link link-primary text-xs">
+              Sign in
+            </button>
           </div>
         </section>
       </div>
@@ -91,4 +180,36 @@
 const props = defineProps<{
   modalClass: string;
 }>();
+
+const showSignIn = ref(true);
+
+const signInData = ref({
+  email: "",
+  password: "",
+});
+
+const signUpData = ref({
+  name: "",
+  lasName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+});
+
+const handleSignUpClick = () => {
+  showSignIn.value = false;
+};
+const handleSignInClick = () => {
+  showSignIn.value = true;
+};
+
+const handleSignInSubmit = () => {
+  console.log(signInData.value);
+  // Here you can add code to send the sign in data to your backend
+};
+
+const handleSignUpSubmit = () => {
+  console.log(signUpData.value);
+  // Here you can add code to send the sign up data to your backend
+};
 </script>
